@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from "motion/react"
-import { FaGoogle } from "react-icons/fa";
+import { FaGoogle, FaCoins, FaBook, FaTasks, FaChartBar, FaFilePdf } from "react-icons/fa";
 
 function Auth() {
   return (
@@ -27,6 +27,8 @@ function Auth() {
           initial = {{opacity: 0, x: -60}}
           animate = {{opacity: 1, y: 0}}
           transition = {{duration:1.5}}
+          whileHover={{ x: 8, y: -8, rotate: 5, scale: 1.02 }}
+          style={{ transformOrigin: 'center' }}
           >
             <h1 className='text-5xl lg:text-6xl font-extrabold leading-tight
           from-black/90 via-black/60 to-black/90 bg-gradient-to-br
@@ -58,9 +60,14 @@ function Auth() {
             <p className = 'mt-4 text-sm text-gray-500'> Start  with 50 free credits . Upgrade anytime for more credits . Instant access to all features. </p>
         </motion.div>
 
-             <div className='grid grid-cols-1 sm:grid-cols-2 gap-8'>
-                    <Feature icon="gift" title="50 Free Credits" des="Start with 50 credits to generate notes without paying."/>
-              </div>
+             {/* RIGHT CONTENT */}
+<div className='grid grid-cols-1 sm:grid-cols-2 gap-8'>
+  <Feature icon={<FaCoins size={28} />} title="50 Free Credits" description="Start with 50 credits to generate notes without paying." />
+  <Feature icon={<FaBook size={28} />} title="Exam Notes" description="High-yield, revision-ready exam-oriented notes." />
+  <Feature icon={<FaTasks size={28} />} title="Project Notes" description="Well-structured documentation for assignments & projects." />
+  <Feature icon={<FaChartBar size={28} />} title="Charts & Graphs" description="Auto-generated diagrams, charts and flow graphs." />
+  <Feature icon={<FaFilePdf size={28} />} title="Free PDF Download" description="Download clean, printable PDFs instantly." />
+</div>
             
         </main>
     </div>

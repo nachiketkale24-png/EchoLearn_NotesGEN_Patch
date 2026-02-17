@@ -1,8 +1,25 @@
 import React from 'react'
 import { motion } from "motion/react"
 import { FaGoogle, FaCoins, FaBook, FaTasks, FaChartBar, FaFilePdf } from "react-icons/fa";
+import {auth,provider} from "../utils/firebase"
+import { signInWithPopup } from "firebase/auth";  
+
 
 function Auth() {
+   
+const handleGoogleAuth = async () => {
+  try{
+    const response = await signInWithPopup(auth, provider);
+    const User = response.user;
+    const name = User.displayName;
+    const email = User.email;
+  }
+  catch(error){
+    console.error("Google Sign-In Error:", error);
+  }
+}
+
+
   return (
     <div className='min-h-screen overflow-hidden bg-white text-black px-8'>
         <motion.header 
@@ -35,6 +52,7 @@ function Auth() {
             bg-clip-text text-transparent'>
             Unlock Smart <br /> AI Notes</h1>
             <motion.button 
+            onClick={handleGoogleAuth}
             whileHover={{
               y:-10,
               rotateX:8,

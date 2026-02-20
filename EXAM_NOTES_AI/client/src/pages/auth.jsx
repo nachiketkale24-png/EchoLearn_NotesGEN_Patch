@@ -3,7 +3,8 @@ import { motion } from "motion/react"
 import { FaGoogle, FaCoins, FaBook, FaTasks, FaChartBar, FaFilePdf } from "react-icons/fa";
 import {auth,provider} from "../utils/firebase"
 import { signInWithPopup } from "firebase/auth";  
-
+import axios from 'axios';
+import { serverURL } from '../App';
 
 function Auth() {
    
@@ -13,6 +14,8 @@ const handleGoogleAuth = async () => {
     const User = response.user;
     const name = User.displayName;
     const email = User.email;
+    const result = await axios.post(serverURL + "/api/auth/google", { name, email },{withCredentials:true}); 
+    console.log(result.data); 
   }
   catch(error){
     console.error("Google Sign-In Error:", error);

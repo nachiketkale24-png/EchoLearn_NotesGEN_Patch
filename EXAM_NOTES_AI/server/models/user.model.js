@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
         default:true
     },
     notes:{
-        type:[Mongoose.Schema.Types.ObjectId],
+        type:[mongoose.Schema.Types.ObjectId],
         ref:"Notes",
         default:[]
     }

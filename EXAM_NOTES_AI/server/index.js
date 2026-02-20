@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import connectDB from './utils/connectDB.js';
 import authRouter from './routes/auth.route.js';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 
 dotenv.config();
 
@@ -21,8 +22,12 @@ app.get('/',(req,res)=>{
 
 app.use("/api/auth", authRouter);
 
-app.listen(PORT, () => {
-    console.log(`server is running on port ${PORT}`);
-    connectDB();
-});
+const startServer = async () => {
+    await connectDB();
+    app.listen(PORT, () => {
+        console.log(`server is running on port ${PORT}`);
+    });
+};
+
+startServer();
 

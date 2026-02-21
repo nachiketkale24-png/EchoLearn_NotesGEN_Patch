@@ -1,0 +1,15 @@
+import UserModel from "../models/user.model.js";
+
+export const getUser = async(req, res) => {
+    try{
+        const userId = req.userId;
+        const user = await UserModel.findById(userId)
+        if(!user){
+            return res.status(404).json({message:"current user not found  //user.conrtoller.js error"});
+            }
+        return res.status(200).json(user);
+    }
+    catch(error){
+            return res.status(500).json({message:"getCurrentUser error", error:error.message}); 
+    }
+}
